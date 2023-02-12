@@ -25,9 +25,37 @@ void on_center_button() {
 void initialize() {
     // Brain screen and buttons
 	pros::lcd::initialize();
-	pros::lcd::set_text(1, "Hello PROS User!");
-	pros::lcd::register_btn1_cb(on_center_button);
-	
+
+    // Drive motors
+	driveLeftBack.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+	driveLeftCenter.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+	driveLeftFront.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+	driveRightBack.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+	driveRightCenter.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+	driveRightBack.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+
+    // Motor groups
+	driveLeft.set_brake_modes(pros::E_MOTOR_BRAKE_COAST);
+	driveRight.set_brake_modes(pros::E_MOTOR_BRAKE_COAST);
+
+	// Subsystem Motors
+	//intake.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+
+	// Pneumatics
+	stringLauncher1.set_value(0);
+	//stringLauncher2.set_value(0);
+
+	// Inertial Sensor
+	imu.reset();
+	int time = pros::millis();
+  	int iter = 0;
+  	while (imu.is_calibrating()) {
+    	printf("IMU calibrating... %d\n", iter);
+    	iter += 10;
+    	pros::delay(10);
+	}
+	// Should print after about 2000 ms
+	printf("IMU is done calibrating (took %d ms)\n", iter - time);
 }
 
 /**
@@ -35,7 +63,10 @@ void initialize() {
  * the VEX Competition Switch, following either autonomous or opcontrol. When
  * the robot is enabled, this task will exit.
  */
-void disabled() {}
+void disabled() {
+    // Autonomous selector
+    selector::init();
+}
 
 /**
  * Runs after initialize(), and before autonomous when connected to the Field
@@ -46,4 +77,7 @@ void disabled() {}
  * This task will exit when the robot is enabled and autonomous or opcontrol
  * starts.
  */
-void competition_initialize() {}
+void competition_initialize() {
+    // Autonomous selector
+    selector::init();
+}

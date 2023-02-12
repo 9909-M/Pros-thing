@@ -27,31 +27,17 @@ void opcontrol() {
 	//stringLauncher2.set_value(0);
 
 	// Display gif image on brain screen
-	//Gif gif("/usd/tipping_point_HD.gif", lv_scr_act());
-
-	// Chassis controller
-	std::shared_ptr<ChassisController> drive =
-		ChassisControllerBuilder()
-			.withMotors({1, 2, 3}, {4, 5, 6})
-			// Green gearset, 2.75" wheel diameter, 11.75" wheel track, 10.75" wheelbase, gear ratio 72:36
-			.withDimensions({AbstractMotor::gearset::green, (72.0 / 36.0)}, {{2.75_in, 11.75_in}, imev5GreenTPR})
-			//.withGains(
-			//	{0, 0, 0},	// Distance controller gains
-			//	{0, 0, 0},	// Turn controller gains
-			//	{0, 0, 0})	// Angle controller gains
-			//.withOdometry() // Use the same scales as the chassis (above) for odometry (not worth it without encoders & tracking wheel)
-			.build();
-		drive->setMaxVelocity(200);
+	//static Gif gif("/usd/logo_unstretched.gif", lv_scr_act());
 
 	while(true) {
 		// Control drivetrain
-		drive->getModel()->arcade(
+		chassis->getModel()->arcade(
 			controller1.getAnalog(ControllerAnalog::leftY),
 			controller1.getAnalog(ControllerAnalog::rightX));
 		// Control intake & rollerRoller
-		//setIntakeMotor();
+		setIntakeMotor();
 		// Control stringLaunchers
-		//setStringLaunchers();
+		setStringLaunchers();
 		pros::delay(10);
 	}
 }
