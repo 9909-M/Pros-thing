@@ -25,6 +25,7 @@ void on_center_button() {
 void initialize() {
     // Brain screen and buttons
 	pros::lcd::initialize();
+	selector::init();
 
     // Drive motors
 	driveLeftBack.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);

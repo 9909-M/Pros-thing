@@ -5,7 +5,7 @@ bool launchString = true;
 
 // String launcher control functions
 void setStringLaunchers() {
-    if (controller1.getDigital(ControllerDigital::A)) {
+    if (controller1.getDigital(ControllerDigital::B)) {
         if (launchString) {
             stringLauncher1.set_value(1);
             //stringLauncher2.setValue(1);
