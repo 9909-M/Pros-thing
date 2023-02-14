@@ -24,4 +24,4 @@ extern pros::ADIDigitalOut stringLauncher1;
 extern pros::Imu imu;
 
 // OkapiLib's ChassisController
-extern std::shared_ptr<ChassisController> chassis;
+extern std::shared_ptr<okapi::OdomChassisController> chassis;

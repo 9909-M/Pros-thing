@@ -24,15 +24,15 @@ pros::ADIDigitalOut stringLauncher1('H', false);
 pros::Imu imu(20);
 
 // Chassis controller
-std::shared_ptr<ChassisController> chassis =
+std::shared_ptr<okapi::OdomChassisController> chassis =
 	ChassisControllerBuilder()
 		.withMotors({1, 2, 3}, {4, 5, 6})
 		// Green gearset, 2.75" wheel diameter, 11.75" wheel track, 10.75" wheelbase, gear ratio 72:36
 		.withDimensions({AbstractMotor::gearset::green, (72.0 / 36.0)}, {{2.75_in, 11.75_in}, imev5GreenTPR})
-		//.withGains(
-		//	{0, 0, 0},	// Distance controller gains
-		//	{0, 0, 0},	// Turn controller gains
-		//	{0, 0, 0})	// Angle controller gains
-		//.withOdometry() // Use the same scales as the chassis (above) for odometry (not worth it without encoders & tracking wheel)
-        .withMaxVelocity(200);
-		.build();
+		.withGains(
+			{0, 0, 0},	// Distance controller gains
+			{0, 0, 0},	// Turn controller gains
+			{0, 0, 0})	// Angle controller gains
+		.withOdometry() // Use the same scales as the chassis (above) for odometry (not worth it without encoders & tracking wheel)
+        .withMaxVelocity(160)
+		.buildOdometry();
