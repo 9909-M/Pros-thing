@@ -30,9 +30,9 @@ std::shared_ptr<okapi::OdomChassisController> chassis =
 		// Green gearset, 2.75" wheel diameter, 11.75" wheel track, 10.75" wheelbase, gear ratio 72:36
 		.withDimensions({AbstractMotor::gearset::green, (72.0 / 36.0)}, {{2.75_in, 11.75_in}, imev5GreenTPR})
 		.withGains(
-			{0, 0, 0},	// Distance controller gains
-			{0, 0, 0},	// Turn controller gains
-			{0, 0, 0})	// Angle controller gains
+			{0.001, 0, 0.0001},	// Distance controller gains
+			{0.001, 0, 0.0001},	// Turn controller gains
+			{0.001, 0, 0.0001})	// Angle controller gains
 		.withOdometry() // Use the same scales as the chassis (above) for odometry (not worth it without encoders & tracking wheel)
         .withMaxVelocity(160)
 		.buildOdometry();
