@@ -11,6 +11,7 @@ extern pros::Motor driveLeftBack;
 extern pros::Motor driveRightFront;
 extern pros::Motor driveRightCenter;
 extern pros::Motor driveRightBack;
+extern pros::Motor intake;
 
 // Motor Group
 extern pros::Motor_Group driveLeft;
@@ -21,3 +22,6 @@ extern pros::ADIDigitalOut stringLauncher1;
 
 // Intertial Sensor
 extern pros::Imu imu;
+
+// OkapiLib's ChassisController
+extern std::shared_ptr<ChassisController> chassis;

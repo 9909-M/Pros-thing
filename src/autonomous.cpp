@@ -11,4 +11,31 @@
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous() {}
+void autonomous() {
+    // Display gif image on the brain screen
+    //static Gif gif("/usd/logo_unstretched.gif", lv_scr_act());
+
+    if (selector::auton == 1 || selector::auton == -1) {        // Left side auton
+        // Set the odometric state to zero
+        chassis->setState({0_in, 0_in, 0_deg});
+
+        // Step 1
+        chassis->driveToPoint({1_in, 0_in});
+    }
+
+    else if (selector::auton == 2 || selector::auton == -2) {   // Right side match auton
+        // Set the odometric state to zero
+        chassis->setState({0_in, 0_in, 0_deg});
+
+        // Step 1
+        chassis->driveToPoint({1_in, 0_in});
+    }
+
+    else if (selector::auton == 0) {
+        // Set the odometric state to zero
+        chassis->setState({0_in, 0_in, 0_deg});
+
+        // Step 1
+        chassis->driveToPoint({1_in, 0_in});
+    }
+}
