@@ -36,6 +36,7 @@ void opcontrol() {
 			controller1.getAnalog(ControllerAnalog::rightX));
 		// Control intake & rollerRoller
 		setIntakeMotor();
+		setCataMotor();
 		// Control stringLaunchers
 		setStringLaunchers();
 		pros::delay(10);

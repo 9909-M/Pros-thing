@@ -12,6 +12,7 @@ extern pros::Motor driveRightFront;
 extern pros::Motor driveRightCenter;
 extern pros::Motor driveRightBack;
 extern pros::Motor intake;
+extern pros::Motor cata;
 
 // Motor Group
 extern pros::Motor_Group driveLeft;

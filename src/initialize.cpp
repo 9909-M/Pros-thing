@@ -40,7 +40,8 @@ void initialize() {
 	driveRight.set_brake_modes(pros::E_MOTOR_BRAKE_COAST);
 
 	// Subsystem Motors
-	//intake.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+	intake.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+	cata.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
 
 	// Pneumatics
 	stringLauncher1.set_value(0);
